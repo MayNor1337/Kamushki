@@ -88,7 +88,7 @@ namespace UI.MainMenu
 
                 if (asyncOperation.progress >= 0.9f )
                 {
-                    textLoad.text = "€¿¿¿¿¿¿¿¿¿¿¿¿¿¿";
+                    textLoad.text = "Press any key to continue";
 
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
