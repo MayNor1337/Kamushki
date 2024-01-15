@@ -20,9 +20,14 @@ namespace UI.MainMenu
         [Header ("Settings")]
         [SerializeField] GameObject settingsWindows;
         [SerializeField] GameObject activeSettingsWindow;
+
+        [Header ("Values")]
         [SerializeField] TMP_Text FPSLimitValue;
         [SerializeField] TMP_Text brightnessValue;
         [SerializeField] TMP_Text contrastValue;
+        [SerializeField] TMP_Text FOVValue;
+
+        [Header ("Post-Processing")]
         [SerializeField] PostProcessProfile postProcessProfile;
         [SerializeField] PostProcessLayer layer;
 
@@ -174,6 +179,13 @@ namespace UI.MainMenu
 
             colorGrading.contrast.value = value;
             contrastValue.text = value.ToString();
+        }
+        public void ChangeFOV(Slider slider)
+        {
+            int value = (int) slider.value;
+
+            Camera.main.fieldOfView = value;
+            FOVValue.text = value.ToString();
         }
         #endregion
         IEnumerator LoadSceneRoutine(int sceneIndex)
