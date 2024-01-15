@@ -19,6 +19,7 @@ namespace UI.MainMenu
         [Header ("Settings")]
         [SerializeField] GameObject settingsWindows;
         [SerializeField] GameObject activeSettingsWindow;
+        [SerializeField] TMP_Text FPSLimitValue;
 
         [Header("Loading Components")]
         [SerializeField] TMP_Text textLoad;
@@ -82,6 +83,7 @@ namespace UI.MainMenu
         public void changeResolution(TMP_Dropdown dropdown)                         // смена разрешения
         {
             int value = dropdown.value;
+
             switch (value) {
                 default: break;
                 case 0: 
@@ -114,6 +116,7 @@ namespace UI.MainMenu
         public void changeScreenMode(TMP_Dropdown dropdown)                         // смена видеорежима
         {
             int value = dropdown.value;
+
             switch(value)
             {
                 default: break;
@@ -132,13 +135,12 @@ namespace UI.MainMenu
             }
         }
 
-        public void VSyncToggle(Toggle toggle)
+        public void VSyncToggle(Toggle toggle)              // VSync
         {
             bool value = toggle.isOn;
 
             switch (value)
             {   
-                default: break;
                 case false:
                     QualitySettings.vSyncCount = 0;
                     break;
@@ -146,7 +148,11 @@ namespace UI.MainMenu
                     QualitySettings.vSyncCount = 1;
                     break;
             }
-            Debug.Log(QualitySettings.vSyncCount);
+        }
+        public void FPSLimit(Slider slider)                 // ограничитель FPS
+        {
+            Application.targetFrameRate = (int)slider.value;
+            FPSLimitValue.text = Application.targetFrameRate.ToString();
         }
 
         #endregion
@@ -184,11 +190,13 @@ namespace UI.MainMenu
         // Start is called before the first frame update
         void Start()
         {
+            // инициализация параметров разрешения
             screenWidth = 1920;
             screenHeight = 1080;
             screenMode = FullScreenMode.ExclusiveFullScreen;
             Screen.SetResolution(screenWidth, screenHeight, screenMode);
 
+            // инициализация интерфейса
             mainPanel.SetActive(true);
             loadingPanel.SetActive(false);
 
