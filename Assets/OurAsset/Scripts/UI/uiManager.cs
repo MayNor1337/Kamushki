@@ -75,17 +75,60 @@ namespace UI.MainMenu
 
         #region settingsMethods
 
+        private int screenWidth;
+        private int screenHeight;
+        private FullScreenMode screenMode;
+
         public void changeResolution(TMP_Dropdown dropdown)                         // смена разрешения
         {
             int value = dropdown.value;
-            
             switch (value) {
                 default: break;
-                case 1: value = 0; Screen.SetResolution(1920, 1080, true); Debug.Log(Screen.currentResolution); break;
-                case 2: value = 1; Screen.SetResolution(1600, 900, true); Debug.Log(Screen.currentResolution); break;
-                case 3: value = 2; Screen.SetResolution(1280, 720, true); Debug.Log(Screen.currentResolution); break;
-                case 4: value = 3; Screen.SetResolution(1024, 768, true); Debug.Log(Screen.currentResolution); break;
-                case 5: value = 4; Screen.SetResolution(800, 600, true); Debug.Log(Screen.currentResolution); break;
+                case 0: 
+                    Screen.SetResolution(1920, 1080, screenMode);
+                    screenWidth = 1920;
+                    screenHeight = 1080;
+                    break;
+                case 1: 
+                    Screen.SetResolution(1600, 900, screenMode);
+                    screenWidth = 1600;
+                    screenHeight = 900;
+                    break;
+                case 2: 
+                    Screen.SetResolution(1280, 720, screenMode); 
+                    screenWidth = 1280;
+                    screenHeight = 720; 
+                    break;
+                case 3: 
+                    Screen.SetResolution(1024, 768, screenMode); 
+                    screenWidth = 1024;
+                    screenHeight = 768;
+                    break;
+                case 4: 
+                    Screen.SetResolution(800, 600, screenMode); 
+                    screenWidth = 800;
+                    screenHeight = 600;
+                    break;
+            }
+        }
+        public void changeScreenMode(TMP_Dropdown dropdown)                         // смена видеорежима
+        {
+            int value = dropdown.value;
+            switch(value)
+            {
+                default: break;
+                case 0:
+                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.ExclusiveFullScreen);
+                    screenMode = FullScreenMode.ExclusiveFullScreen;
+                    break;
+                case 1:
+                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.FullScreenWindow);
+                    screenMode = FullScreenMode.FullScreenWindow;
+                    break;
+                case 2:
+                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.Windowed);
+                    screenMode = FullScreenMode.Windowed;
+                    break;
             }
         }
 
@@ -124,8 +167,14 @@ namespace UI.MainMenu
         // Start is called before the first frame update
         void Start()
         {
+            screenWidth = 1920;
+            screenHeight = 1080;
+            screenMode = FullScreenMode.ExclusiveFullScreen;
+            Screen.SetResolution(screenWidth, screenHeight, screenMode);
+
             mainPanel.SetActive(true);
             loadingPanel.SetActive(false);
+
             foreach(Transform child in miscPanels.transform)
             {
                 child.gameObject.SetActive(false);
