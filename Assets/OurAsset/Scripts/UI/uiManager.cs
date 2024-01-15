@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 using System;
 
 namespace UI.MainMenu
@@ -20,6 +21,9 @@ namespace UI.MainMenu
         [SerializeField] GameObject settingsWindows;
         [SerializeField] GameObject activeSettingsWindow;
         [SerializeField] TMP_Text FPSLimitValue;
+        [SerializeField] TMP_Text brightnessValue;
+        [SerializeField] PostProcessProfile brightness;
+        [SerializeField] PostProcessLayer layer;
 
         [Header("Loading Components")]
         [SerializeField] TMP_Text textLoad;
@@ -79,6 +83,7 @@ namespace UI.MainMenu
         private int screenWidth;
         private int screenHeight;
         private FullScreenMode screenMode;
+        private AutoExposure exposure;
 
         public void changeResolution(TMP_Dropdown dropdown)                         // смена разрешения
         {
@@ -154,6 +159,20 @@ namespace UI.MainMenu
             Application.targetFrameRate = (int)slider.value;
             FPSLimitValue.text = Application.targetFrameRate.ToString();
         }
+        public void ChangeBrightness(Slider slider)
+        {
+            float value = slider.value;
+
+            if(value != 0)
+            {
+                exposure.keyValue.value = value;
+            }
+            else
+            {
+                exposure.keyValue.value = .05f;
+            }
+            brightnessValue.text = (int) (value * 100) + "%";
+        }
 
         #endregion
         IEnumerator LoadSceneRoutine(int sceneIndex)
@@ -200,13 +219,11 @@ namespace UI.MainMenu
             mainPanel.SetActive(true);
             loadingPanel.SetActive(false);
 
-            foreach(Transform child in miscPanels.transform)
+            foreach (Transform child in miscPanels.transform)
             {
                 child.gameObject.SetActive(false);
             }
-
-
-
+            brightness.TryGetSettings(out exposure);
         }
 
         // Update is called once per frame
