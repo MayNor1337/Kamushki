@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 namespace UI.MainMenu
 {
@@ -72,7 +73,23 @@ namespace UI.MainMenu
 
         #endregion
 
+        #region settingsMethods
 
+        public void changeResolution(TMP_Dropdown dropdown)                         // смена разрешения
+        {
+            int value = dropdown.value;
+            
+            switch (value) {
+                default: break;
+                case 1: value = 0; Screen.SetResolution(1920, 1080, true); Debug.Log(Screen.currentResolution); break;
+                case 2: value = 1; Screen.SetResolution(1600, 900, true); Debug.Log(Screen.currentResolution); break;
+                case 3: value = 2; Screen.SetResolution(1280, 720, true); Debug.Log(Screen.currentResolution); break;
+                case 4: value = 3; Screen.SetResolution(1024, 768, true); Debug.Log(Screen.currentResolution); break;
+                case 5: value = 4; Screen.SetResolution(800, 600, true); Debug.Log(Screen.currentResolution); break;
+            }
+        }
+
+        #endregion
         IEnumerator LoadSceneRoutine(int sceneIndex)
         {
             yield return null;
