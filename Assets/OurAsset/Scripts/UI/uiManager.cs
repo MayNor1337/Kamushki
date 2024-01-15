@@ -132,6 +132,23 @@ namespace UI.MainMenu
             }
         }
 
+        public void VSyncToggle(Toggle toggle)
+        {
+            bool value = toggle.isOn;
+
+            switch (value)
+            {   
+                default: break;
+                case false:
+                    QualitySettings.vSyncCount = 0;
+                    break;
+                case true:
+                    QualitySettings.vSyncCount = 1;
+                    break;
+            }
+            Debug.Log(QualitySettings.vSyncCount);
+        }
+
         #endregion
         IEnumerator LoadSceneRoutine(int sceneIndex)
         {
