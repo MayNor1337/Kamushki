@@ -22,7 +22,8 @@ namespace UI.MainMenu
         [SerializeField] GameObject activeSettingsWindow;
         [SerializeField] TMP_Text FPSLimitValue;
         [SerializeField] TMP_Text brightnessValue;
-        [SerializeField] PostProcessProfile brightness;
+        [SerializeField] TMP_Text contrastValue;
+        [SerializeField] PostProcessProfile postProcessProfile;
         [SerializeField] PostProcessLayer layer;
 
         [Header("Loading Components")]
@@ -84,6 +85,7 @@ namespace UI.MainMenu
         private int screenHeight;
         private FullScreenMode screenMode;
         private AutoExposure exposure;
+        private ColorGrading colorGrading;
 
         public void changeResolution(TMP_Dropdown dropdown)                         // смена разрешения
         {
@@ -163,17 +165,16 @@ namespace UI.MainMenu
         {
             float value = slider.value;
 
-            if(value != 0)
-            {
-                exposure.keyValue.value = value;
-            }
-            else
-            {
-                exposure.keyValue.value = .05f;
-            }
+            exposure.keyValue.value = value;
             brightnessValue.text = (int) (value * 100) + "%";
         }
+        public void ChangeContrast(Slider slider)
+        {
+            int value = (int) slider.value;
 
+            colorGrading.contrast.value = value;
+            contrastValue.text = value.ToString();
+        }
         #endregion
         IEnumerator LoadSceneRoutine(int sceneIndex)
         {
@@ -223,7 +224,10 @@ namespace UI.MainMenu
             {
                 child.gameObject.SetActive(false);
             }
-            brightness.TryGetSettings(out exposure);
+
+            // получение настроек постпроцессинга
+            postProcessProfile.TryGetSettings(out exposure);
+            postProcessProfile.TryGetSettings(out colorGrading);
         }
 
         // Update is called once per frame
