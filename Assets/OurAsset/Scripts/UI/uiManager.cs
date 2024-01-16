@@ -28,6 +28,7 @@ namespace UI.MainMenu
         [SerializeField] TMP_Text brightnessValue;
         [SerializeField] TMP_Text contrastValue;
         [SerializeField] TMP_Text FOVValue;
+        [SerializeField] TMP_Text sensivityValue;
 
         // значени€ параметров звука
         [SerializeField] TMP_Text masterValue;
@@ -101,6 +102,7 @@ namespace UI.MainMenu
         private int screenWidth;
         private int screenHeight;
         private FullScreenMode screenMode;
+
         private AutoExposure exposure;
         private ColorGrading colorGrading;
 
@@ -145,15 +147,15 @@ namespace UI.MainMenu
             {
                 default: break;
                 case 0:
-                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.ExclusiveFullScreen);
+                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.ExclusiveFullScreen);        // полноэкранный
                     screenMode = FullScreenMode.ExclusiveFullScreen;
                     break;
                 case 1:
-                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.FullScreenWindow);
+                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.FullScreenWindow);           // безрамочный
                     screenMode = FullScreenMode.FullScreenWindow;
                     break;
                 case 2:
-                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.Windowed);
+                    Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.Windowed);                   // оконный
                     screenMode = FullScreenMode.Windowed;
                     break;
             }
@@ -178,58 +180,61 @@ namespace UI.MainMenu
             Application.targetFrameRate = (int)slider.value;
             FPSLimitValue.text = Application.targetFrameRate.ToString();
         }
-        public void ChangeBrightness(Slider slider)
+        public void ChangeBrightness(Slider slider)         // изменение €ркости
         {
             float value = slider.value;
 
             exposure.keyValue.value = value;
             brightnessValue.text = (int) (value * 100) + "%";
         }
-        public void ChangeContrast(Slider slider)
+        public void ChangeContrast(Slider slider)           // изменение контраста
         {
             int value = (int) slider.value;
 
             colorGrading.contrast.value = value;
             contrastValue.text = value.ToString();
         }
-        public void ChangeFOV(Slider slider)
+        public void ChangeFOV(Slider slider)                // изменение пол€ зрени€
         {
             int value = (int) slider.value;
 
             Camera.main.fieldOfView = value;
             FOVValue.text = value.ToString();
         }
-
+        public void ChangeSensivity(Slider slider)          // смена чувствительности (пока что ни на что не вли€ет)
+        {
+            sensivityValue.text = slider.value.ToString();
+        }
         #region volumeMethods
-        public void ChangeMasterVolume(Slider slider)
+        public void ChangeMasterVolume(Slider slider)           // обща€ громкость
         {
             String value = (80 + slider.value).ToString();
 
             master.SetFloat("masterVolume", slider.value);
             masterValue.text = value;
         }
-        public void ChangeMusicVolume(Slider slider)
+        public void ChangeMusicVolume(Slider slider)            // громкость музыки
         {
             String value = (80 + slider.value).ToString();
 
             master.SetFloat("musicVolume", slider.value);
             musicValue.text = value;
         }
-        public void ChangeAmbienceVolume(Slider slider)
+        public void ChangeAmbienceVolume(Slider slider)         // громкость среды
         {
             String value = (80 + slider.value).ToString();
 
             master.SetFloat("ambienceVolume", slider.value);
             ambienceValue.text = value;
         }
-        public void ChangeEffectsVolume(Slider slider)
+        public void ChangeEffectsVolume(Slider slider)          // громкость эффектов
         {
             String value = (80 + slider.value).ToString();
 
             master.SetFloat("effectsVolume", slider.value);
             effectsValue.text = value;
         }
-        public void ChangeVoicesVolume(Slider slider)
+        public void ChangeVoicesVolume(Slider slider)           // громкость озвучки
         {
             String value = (80 + slider.value).ToString();
 
