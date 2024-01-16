@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using System;
+using UnityEngine.Audio;
 
 namespace UI.MainMenu
 {
@@ -22,14 +23,25 @@ namespace UI.MainMenu
         [SerializeField] GameObject activeSettingsWindow;
 
         [Header ("Values")]
+        // значения параметров графики
         [SerializeField] TMP_Text FPSLimitValue;
         [SerializeField] TMP_Text brightnessValue;
         [SerializeField] TMP_Text contrastValue;
         [SerializeField] TMP_Text FOVValue;
 
+        // значения параметров звука
+        [SerializeField] TMP_Text masterValue;
+        [SerializeField] TMP_Text musicValue;
+        [SerializeField] TMP_Text ambienceValue;
+        [SerializeField] TMP_Text effectsValue;
+        [SerializeField] TMP_Text voicesValue;
+
         [Header ("Post-Processing")]
         [SerializeField] PostProcessProfile postProcessProfile;
-        [SerializeField] PostProcessLayer layer;
+        [SerializeField] PostProcessLayer postProcessLayer;
+
+        [Header("Audio")]
+        [SerializeField] AudioMixer master;
 
         [Header("Loading Components")]
         [SerializeField] TMP_Text textLoad;
@@ -187,7 +199,47 @@ namespace UI.MainMenu
             Camera.main.fieldOfView = value;
             FOVValue.text = value.ToString();
         }
+
+        #region volumeMethods
+        public void ChangeMasterVolume(Slider slider)
+        {
+            String value = (80 + slider.value).ToString();
+
+            master.SetFloat("masterVolume", slider.value);
+            masterValue.text = value;
+        }
+        public void ChangeMusicVolume(Slider slider)
+        {
+            String value = (80 + slider.value).ToString();
+
+            master.SetFloat("musicVolume", slider.value);
+            musicValue.text = value;
+        }
+        public void ChangeAmbienceVolume(Slider slider)
+        {
+            String value = (80 + slider.value).ToString();
+
+            master.SetFloat("ambienceVolume", slider.value);
+            ambienceValue.text = value;
+        }
+        public void ChangeEffectsVolume(Slider slider)
+        {
+            String value = (80 + slider.value).ToString();
+
+            master.SetFloat("effectsVolume", slider.value);
+            effectsValue.text = value;
+        }
+        public void ChangeVoicesVolume(Slider slider)
+        {
+            String value = (80 + slider.value).ToString();
+
+            master.SetFloat("voicesVolume", slider.value);
+            voicesValue.text = value;
+        }
         #endregion
+
+        #endregion
+
         IEnumerator LoadSceneRoutine(int sceneIndex)
         {
             yield return null;
