@@ -10719,7 +10719,7 @@ MonoBehaviour:
   effectsValue: {fileID: 1159657619}
   voicesValue: {fileID: 122254084}
   postProcessProfile: {fileID: 11400000, guid: f12a09a369db1dc42862e392c785ac49, type: 2}
-  layer: {fileID: 1876187617}
+  postProcessLayer: {fileID: 1876187617}
   master: {fileID: 24100000, guid: 1ad3f0b826979044f8388aa8c6613193, type: 2}
   textLoad: {fileID: 1275998529}
   imgLoad: {fileID: 51880160}
