@@ -21,6 +21,7 @@ namespace UI.MainMenu
         [Header ("Settings")]
         [SerializeField] GameObject settingsWindows;
         [SerializeField] GameObject activeSettingsWindow;
+        [SerializeField] Button activeSettingsButton;
 
         [Header ("Values")]
         // значени€ параметров графики
@@ -51,21 +52,21 @@ namespace UI.MainMenu
         #region btMethods
 
 
-        public void btContinue ()                   // загрузка последнего сохранени€
+        public void btContinue ()                                               // загрузка последнего сохранени€
         {
             // когда разберЄмс€ с сохранени€ми - здесь будет вызов метода загрузки
 
             mainPanel.SetActive(false);
             loadingPanel.SetActive(true);
         }
-        public void btNewGame()                     // запуск новой игры
+        public void btNewGame()                                                 // запуск новой игры
         {
-            StartCoroutine(LoadSceneRoutine(1));    // передаЄт индекс первого (по задумке, начального) уровн€
+            StartCoroutine(LoadSceneRoutine(1));                                // передаЄт индекс первого (по задумке, начального) уровн€
 
             mainPanel.SetActive(false);
             loadingPanel.SetActive(true);
         }
-        public void btSwitchPanels(GameObject targetPanel) // переход на другую страницу
+        public void btSwitchPanels(GameObject targetPanel)                      // переход на другую страницу
         {
             mainPanel.SetActive(false);
             targetPanel.SetActive(true);
@@ -79,18 +80,24 @@ namespace UI.MainMenu
                 activeSettingsWindow.SetActive(true);
             }
         }
-        public void btGoBack(GameObject activePanel)      // переход на предыдущую страницу
+        public void btGoBack(GameObject activePanel)                            // переход на предыдущую страницу
         {
             mainPanel.SetActive(true);
             activePanel.SetActive(false);
         }
-        public void btSwitchSettingsWindow(GameObject targetSettingsWindow)
+        public void btSwitchSettingsWindow(GameObject targetSettingsWindow)     // изменение окна настроек
         {
             activeSettingsWindow.SetActive(false);
             targetSettingsWindow.SetActive(true);
             activeSettingsWindow = targetSettingsWindow;
         }
-        public void btExit()                              // выход
+        public void btChangeColor(Button button)                                // изменение цвета кнопки в настройках
+        {
+            activeSettingsButton.GetComponent<Image>().color = Color.white;
+            button.GetComponent<Image>().color = Color.green;
+            activeSettingsButton = button;
+        }
+        public void btExit()                                                    // выход
         {
             Application.Quit();
         }
@@ -160,8 +167,7 @@ namespace UI.MainMenu
                     break;
             }
         }
-
-        public void VSyncToggle(Toggle toggle)              // VSync
+        public void VSyncToggle(Toggle toggle)                                      // VSync
         {
             bool value = toggle.isOn;
 
@@ -175,37 +181,39 @@ namespace UI.MainMenu
                     break;
             }
         }
-        public void FPSLimit(Slider slider)                 // ограничитель FPS
+        public void FPSLimit(Slider slider)                                         // ограничитель FPS
         {
             Application.targetFrameRate = (int)slider.value;
             FPSLimitValue.text = Application.targetFrameRate.ToString();
         }
-        public void ChangeBrightness(Slider slider)         // изменение €ркости
+        public void ChangeBrightness(Slider slider)                                 // изменение €ркости
         {
             float value = slider.value;
 
             exposure.keyValue.value = value;
             brightnessValue.text = (int) (value * 100) + "%";
         }
-        public void ChangeContrast(Slider slider)           // изменение контраста
+        public void ChangeContrast(Slider slider)                                   // изменение контраста
         {
             int value = (int) slider.value;
 
             colorGrading.contrast.value = value;
             contrastValue.text = value.ToString();
         }
-        public void ChangeFOV(Slider slider)                // изменение пол€ зрени€
+        public void ChangeFOV(Slider slider)                                        // изменение пол€ зрени€
         {
             int value = (int) slider.value;
 
             Camera.main.fieldOfView = value;
             FOVValue.text = value.ToString();
         }
-        public void ChangeSensivity(Slider slider)          // смена чувствительности (пока что ни на что не вли€ет)
+        public void ChangeSensivity(Slider slider)                                  // смена чувствительности (пока что ни на что не вли€ет)
         {
             sensivityValue.text = slider.value.ToString();
         }
+
         #region volumeMethods
+
         public void ChangeMasterVolume(Slider slider)           // обща€ громкость
         {
             String value = (80 + slider.value).ToString();
@@ -293,6 +301,9 @@ namespace UI.MainMenu
             {
                 child.gameObject.SetActive(false);
             }
+
+            // изменение цвета кнопки управлени€
+            activeSettingsButton.GetComponent<Image>().color = Color.green;
 
             // получение настроек постпроцессинга
             postProcessProfile.TryGetSettings(out exposure);

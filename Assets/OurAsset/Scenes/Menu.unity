@@ -373,6 +373,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1518745931}
+        m_TargetAssemblyTypeName: UI.MainMenu.NewBehaviourScript, Assembly-CSharp
+        m_MethodName: btChangeColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 16723226}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &16723227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2597,7 +2609,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1518745931}
+        m_TargetAssemblyTypeName: UI.MainMenu.NewBehaviourScript, Assembly-CSharp
+        m_MethodName: ChangeEffectsVolume
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 350813556}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &389748592
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,7 +3295,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 179174631}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.4360486
+  m_Size: 0.43604857
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3439,7 +3463,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1518745931}
+        m_TargetAssemblyTypeName: UI.MainMenu.NewBehaviourScript, Assembly-CSharp
+        m_MethodName: ChangeAmbienceVolume
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 500044671}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &514782198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5980,6 +6016,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1518745931}
+        m_TargetAssemblyTypeName: UI.MainMenu.NewBehaviourScript, Assembly-CSharp
+        m_MethodName: btChangeColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 887624643}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &887624644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7029,10 +7077,10 @@ RectTransform:
   - {fileID: 2090915058}
   m_Father: {fileID: 1413727776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &977393302
 MonoBehaviour:
@@ -7814,7 +7862,7 @@ MonoBehaviour:
     Fusce id sem rhoncus, bibendum felis eu, euismod neque. Phasellus eget egestas
     tortor, at porta odio. Aliquam erat volutpat.
 
-    
+
 
     Phasellus sed tincidunt
     purus. Sed laoreet libero turpis, id interdum sem consectetur at. Donec finibus
@@ -7822,22 +7870,22 @@ MonoBehaviour:
     Ut aliquam non purus eget egestas. In eget risus vitae augue porta pretium. Vestibulum
     a metus pellentesque ipsum varius malesuada.
 
-    
 
-    Nulla eget ipsum in
-    justo maximus interdum vitae nec est. Praesent mollis tincidunt massa non ornare.
-    Cras varius vestibulum est sit amet malesuada. Nulla vel nisl eget ligula bibendum
+
+    Nulla eget ipsum in justo
+    maximus interdum vitae nec est. Praesent mollis tincidunt massa non ornare. Cras
+    varius vestibulum est sit amet malesuada. Nulla vel nisl eget ligula bibendum
     condimentum. Ut egestas bibendum nulla, at malesuada felis tincidunt sit amet.
     Nam lacus orci, efficitur eget posuere posuere, condimentum at lorem. Mauris
     iaculis tortor sed magna auctor, id posuere metus consectetur. Vivamus posuere
     nunc sem, ut euismod nulla porta sed. Sed in cursus sem, fringilla commodo lacus.
     Morbi id erat a est ornare feugiat.
 
-    
 
-    Vivamus eleifend egestas varius.
-    Nam congue justo id mi lacinia, interdum feugiat nisl tempor. Praesent eu purus
-    at velit mollis lobortis sollicitudin vel mauris. Ut nibh mi, bibendum vel lacus
+
+    Vivamus eleifend egestas varius. Nam
+    congue justo id mi lacinia, interdum feugiat nisl tempor. Praesent eu purus at
+    velit mollis lobortis sollicitudin vel mauris. Ut nibh mi, bibendum vel lacus
     sit amet, scelerisque tincidunt lacus. Pellentesque bibendum aliquam erat ac
     fermentum. Maecenas sed aliquam eros. Vestibulum ante ipsum primis in faucibus
     orci luctus et ultrices posuere cubilia curae; Sed accumsan turpis nec efficitur
@@ -7847,7 +7895,7 @@ MonoBehaviour:
     ipsum eu magna dictum fringilla. Aliquam consectetur purus vitae elit pellentesque,
     eget tincidunt tellus pharetra.
 
-    
+
 
     Vestibulum fringilla interdum consectetur.
     Fusce ac odio in tortor fringilla auctor. Pellentesque venenatis nunc quis efficitur
@@ -8370,6 +8418,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 14016657}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1518745931}
+        m_TargetAssemblyTypeName: UI.MainMenu.NewBehaviourScript, Assembly-CSharp
+        m_MethodName: btChangeColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1091512917}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11020,10 +11080,10 @@ RectTransform:
   - {fileID: 1929243391}
   m_Father: {fileID: 1243935862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1428648555
 GameObject:
@@ -11782,6 +11842,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 30690134}
   settingsWindows: {fileID: 324394829}
   activeSettingsWindow: {fileID: 632622145}
+  activeSettingsButton: {fileID: 887624643}
   FPSLimitValue: {fileID: 735234362}
   brightnessValue: {fileID: 98722598}
   contrastValue: {fileID: 2024520023}
@@ -13793,7 +13854,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1518745931}
+        m_TargetAssemblyTypeName: UI.MainMenu.NewBehaviourScript, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1810507606}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1813014780
 GameObject:
   m_ObjectHideFlags: 0
@@ -15055,7 +15128,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.144, y: 2.755}
-  m_SizeDelta: {x: 1920.801, y: 991.845}
+  m_SizeDelta: {x: 1920.801, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1929243392
 MonoBehaviour:
@@ -16557,7 +16630,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1518745931}
+        m_TargetAssemblyTypeName: UI.MainMenu.NewBehaviourScript, Assembly-CSharp
+        m_MethodName: ChangeVoicesVolume
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2113786599}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2131294521
 GameObject:
   m_ObjectHideFlags: 0
