@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using System;
 using UnityEngine.Audio;
+using UnityEditor.Animations;
+using System.Security.Cryptography;
 
 namespace UI.MainMenu
 {
